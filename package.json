@@ -1,0 +1,23 @@
+{
+  "name": "scriptorium",
+  "private": true,
+  "description": "Self-updating field map plus a corpus-grounded writing engine for researchers",
+  "license": "MIT",
+  "author": "AmirAhmadianB",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmirAhmadianB/scriptorium-research-agent.git"
+  },
+  "homepage": "https://github.com/AmirAhmadianB/scriptorium-research-agent#readme",
+  "bugs": {
+    "url": "https://github.com/AmirAhmadianB/scriptorium-research-agent/issues"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,dash \"pnpm --filter @scriptorium/api dev\" \"pnpm --filter @scriptorium/dashboard dev\"",
+    "db:push": "pnpm --filter @scriptorium/api db:push",
+    "scan": "cd services/ingest && python -m scriptorium_ingest.run_scan",
+    "funding": "cd services/ingest && python -m scriptorium_ingest.funding.crawl_funding",
+    "eval": "pnpm --filter @scriptorium/eval matrix"
+  },
+  "devDependencies": { "concurrently": "^9.0.0" }
+}

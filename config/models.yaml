@@ -1,0 +1,36 @@
+# ============================================================
+# MODEL ROUTING — which Claude model runs which job.
+# Rationale in docs/MODEL-ROUTING.md; benchmark with /test-models.
+# Every entry is one line, so a routing change is one line.
+# ============================================================
+default: claude-sonnet-4-6
+
+tasks:
+  # High-volume, low-ambiguity → cheapest capable model
+  crawl_extraction:        { model: claude-haiku-4-5-20251001, max_tokens: 2000, temperature: 0 }
+  relevance_triage:        { model: claude-haiku-4-5-20251001, max_tokens: 500,  temperature: 0 }
+  metadata_cleanup:        { model: claude-haiku-4-5-20251001, max_tokens: 1000, temperature: 0 }
+  entity_extraction:       { model: claude-haiku-4-5-20251001, max_tokens: 500,  temperature: 0 }  # Sprint 3 Pass 2 — graph node seeding for papers without OpenAlex concepts
+
+  # Mid-tier synthesis
+  focus_synthesis:         { model: claude-sonnet-4-6, max_tokens: 1500, temperature: 0.2 }
+  paper_summary:           { model: claude-sonnet-4-6, max_tokens: 2500, temperature: 0.2 }
+  trend_brief:             { model: claude-sonnet-4-6, max_tokens: 4000, temperature: 0.3 }
+  funding_match_rationale: { model: claude-sonnet-4-6, max_tokens: 1500, temperature: 0.2 }
+  knowledge_curation:      { model: claude-sonnet-4-6, max_tokens: 1500, temperature: 0.1 }
+  collaboration_analysis:  { model: claude-sonnet-4-6, max_tokens: 3000, temperature: 0.2 }
+
+  # Deep reasoning + long-form writing → frontier model
+  deep_paper_analysis:     { model: claude-fable-5, max_tokens: 8000,  temperature: 0.2 }
+  proposal_drafting:       { model: claude-fable-5, max_tokens: 16000, temperature: 0.4 }
+  manuscript_drafting:     { model: claude-fable-5, max_tokens: 16000, temperature: 0.4 }
+  reviewer_critique:       { model: claude-fable-5, max_tokens: 6000,  temperature: 0.3 }
+
+  # Evaluation judge (kept distinct so /test-models can vary it)
+  eval_judge:              { model: claude-fable-5, max_tokens: 2000, temperature: 0 }
+
+candidates_for_matrix:     # models /test-models sweeps across
+  - claude-fable-5
+  - claude-opus-4-8
+  - claude-sonnet-4-6
+  - claude-haiku-4-5-20251001

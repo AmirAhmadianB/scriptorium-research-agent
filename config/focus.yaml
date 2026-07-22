@@ -1,0 +1,40 @@
+# ============================================================
+# RESEARCH FOCUS — the single source of truth for what the
+# system scans, ranks, and matches. Edit by hand or via /focus.
+# Every agent reads this file at the start of its run.
+# ============================================================
+goal: >
+  Advance electron ptychography and reflection electron holography toward
+  surface topography and semiconductor device inspection, and identify
+  funding + collaboration routes for the group.
+
+fields:
+  - condensed matter physics
+  - electron microscopy
+  - computational imaging
+
+keywords:
+  include:
+    - electron ptychography
+    - reflection electron holography
+    - RHEED
+    - 4D-STEM
+    - phase retrieval
+    - Medipix / hybrid pixel detector
+    - semiconductor metrology
+  exclude:
+    - optical ptychography only     # drop hits with no electron relevance
+    - biology cryo-EM               # adjacent but out of scope for now
+
+venues_of_interest:            # boosts ranking, not a hard filter
+  - Ultramicroscopy
+  - Physical Review Letters
+  - Nature Communications
+  - Microscopy and Microanalysis
+  - arXiv cond-mat / physics.app-ph
+
+seed_authors: []               # ORCID iDs; citation-graph expansion seeds
+
+horizon_years: 4               # how far back "current trends" looks
+departments:                   # multi-tenant: one block per department later
+  - physics-astronomy

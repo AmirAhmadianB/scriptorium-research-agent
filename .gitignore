@@ -1,0 +1,54 @@
+# --- Node / pnpm ---
+node_modules/
+dist/
+*.tsbuildinfo
+.pnpm-store/
+
+# --- Python ---
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# --- Runtime data / generated output (never commit real corpus/db state) ---
+data/
+drafts/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# --- Secrets ---
+.env
+*.pem
+*.key
+*password*.txt
+
+# --- Build / packaging output (large, machine-specific) ---
+release/
+apps/*/release/
+**/target/
+**/*.rlib
+*.pdb
+apps/desktop/src-tauri/binaries/
+
+# --- Local planning artifacts (not part of the public project) ---
+/*.docx
+/*.pptx
+/*.zip
+/*.ico
+/*.png
+~$*.docx
+~$*.pptx
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- Eval / misc generated ---
+eval/report.md

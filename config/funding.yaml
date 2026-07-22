@@ -1,0 +1,113 @@
+# ============================================================
+# FUNDING RADAR — Canadian + international sources for a
+# Canadian university. Each target is crawled on `cadence`,
+# extracted to structured JSON by the funding-scout agent,
+# and matched against config/focus.yaml keywords.
+# Verify URLs on first run; program pages move.
+# ============================================================
+cadence: daily
+match_threshold: 0.55        # 0..1 relevance score to surface on dashboard
+
+# Sprint 2 Pass 4 (comment 4): the Funding tab defaults to these scopes —
+# configuration, not a hardcoded country check, so this stays field- and
+# institution-adaptive (a non-Canadian deployment edits this one list, not
+# code). Opportunities outside this list are never deleted, only flagged
+# (isDefaultScope: false) — the researcher can still see them by asking.
+default_scopes: [national, provincial, internal]
+
+sources:
+  # --- Tri-agency ---
+  - name: NSERC Alliance
+    url: https://www.nserc-crsng.gc.ca/Innovate-Innover/alliance-alliance/index_eng.asp
+    scope: national
+  - name: NSERC Discovery & supplements
+    url: https://www.nserc-crsng.gc.ca/Professors-Professeurs/Grants-Subs/index_eng.asp
+    scope: national
+  - name: SSHRC funding opportunities
+    url: https://www.sshrc-crsh.gc.ca/funding-financement/index-eng.aspx
+    scope: national
+  - name: CIHR funding opportunities
+    url: https://cihr-irsc.gc.ca/e/37788.html
+    scope: national
+  - name: New Frontiers in Research Fund
+    url: https://www.sshrc-crsh.gc.ca/funding-financement/nfrf-fnfr/index-eng.aspx
+    scope: national
+  # --- Infrastructure / talent ---
+  - name: Canada Foundation for Innovation
+    url: https://www.innovation.ca/apply-manage-awards
+    scope: national
+  - name: Mitacs programs
+    url: https://www.mitacs.ca/our-programs/
+    scope: national
+  - name: NRC IRAP
+    url: https://nrc.canada.ca/en/support-technology-innovation
+    scope: national
+  # --- BC / regional ---
+  - name: Michael Smith Health Research BC
+    url: https://healthresearchbc.ca/funding-opportunities/
+    scope: provincial
+  - name: Innovate BC
+    url: https://www.innovatebc.ca/programs
+    scope: provincial
+  - name: PICS (Pacific Institute for Climate Solutions)
+    url: https://pics.uvic.ca/funding
+    scope: provincial
+  # --- Aggregators / international ---
+  - name: Government of Canada funding finder
+    url: https://innovation.canada.ca/en
+    scope: national
+  - name: Horizon Europe open calls
+    url: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals
+    scope: international
+  - name: US NSF (cross-border collaboration)
+    url: https://www.nsf.gov/funding/opportunities
+    scope: international
+
+  # --- Additional Canadian ---
+  - name: Genome Canada
+    url: https://genomecanada.ca/challenges-initiatives/
+    scope: national
+  - name: NRC research & collaboration programs
+    url: https://nrc.canada.ca/en/research-development/research-collaboration
+    scope: national
+
+  # --- International agencies ---
+  - name: US NIH grants
+    url: https://grants.nih.gov/funding/searchguide/index.html
+    scope: international
+  - name: US DARPA opportunities
+    url: https://www.darpa.mil/work-with-us/opportunities
+    scope: international
+  - name: US DOE Office of Science
+    url: https://science.osti.gov/grants/FOAs/Open
+    scope: international
+  - name: UKRI open funding
+    url: https://www.ukri.org/opportunity/
+    scope: international
+  - name: EPSRC (UKRI)
+    url: https://www.ukri.org/councils/epsrc/
+    scope: international
+  - name: European Research Council
+    url: https://erc.europa.eu/apply-grant/calls-proposals
+    scope: international
+  - name: JSPS (Japan)
+    url: https://www.jsps.go.jp/english/
+    scope: international
+  - name: DFG (Germany)
+    url: https://www.dfg.de/en/research-funding
+    scope: international
+  - name: Australian Research Council
+    url: https://www.arc.gov.au/funding-research/apply-funding
+    scope: international
+
+  # --- Industry / foundation / internal ---
+  # Industry: many corporate partnership calls surface through Mitacs and
+  # NSERC Alliance (above); add specific company R&D portals per department.
+  - name: Internal university funding (Research Services)
+    url: https://www.uvic.ca/research/index.php
+    scope: internal
+    note: replace with the department's internal-competitions page
+  - name: Foundation grants (add per field)
+    url: ""
+    scope: foundation
+    note: add relevant private-foundation portals; some are covered by Pivot-RP if licensed

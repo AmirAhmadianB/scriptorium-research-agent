@@ -1,0 +1,64 @@
+# ============================================================
+# WHERE LITERATURE COMES FROM. Two classes:
+#   apis:   structured, licensed-for-TDM sources (preferred)
+#   crawl:  open web pages the crawler may visit (crawl4ai)
+# Edit by hand or via /sources. NEVER add paywalled publisher
+# domains to `crawl` — see docs/COMPLIANCE.md.
+# ============================================================
+apis:
+  openalex:
+    enabled: true
+    base_url: https://api.openalex.org
+    polite_email_env: OPENALEX_EMAIL     # gets you the fast pool
+  crossref:
+    enabled: true
+    base_url: https://api.crossref.org
+  arxiv:
+    enabled: true
+    base_url: https://export.arxiv.org/api/query
+    categories: [cond-mat.mtrl-sci, physics.app-ph, eess.IV]
+  semantic_scholar:
+    enabled: true
+    base_url: https://api.semanticscholar.org/graph/v1
+    api_key_env: S2_API_KEY
+  unpaywall:
+    enabled: true
+    base_url: https://api.unpaywall.org/v2
+    email_env: UNPAYWALL_EMAIL
+  pubmed:
+    enabled: false                        # flip on for life-science departments
+  publisher_tdm:                          # institutional TDM keys via the library
+    elsevier_tdm:
+      enabled: false
+      api_key_env: ELSEVIER_TDM_KEY
+    springer:
+      enabled: false
+      api_key_env: SPRINGER_API_KEY
+
+crawl:                                    # open-web targets for crawl4ai
+  cadence: daily
+  daily_crawl_time_utc: "03:00"           # Sprint 2 Pass 3 — when the daily scheduler fires (apps/api/src/scheduler.ts)
+  targets:
+    - name: arXiv cond-mat recent
+      url: https://arxiv.org/list/cond-mat.mtrl-sci/recent
+    - name: NIST semiconductor metrology news
+      url: https://www.nist.gov/semiconductors
+  blocked_domains:                        # crawler hard-refuses these
+    - sciencedirect.com
+    - link.springer.com
+    - ieeexplore.ieee.org
+    - onlinelibrary.wiley.com
+    - webofscience.com
+    - scopus.com
+
+library_connectors:                       # per-professor corpora (opt-in)
+  - kind: zotero                          # best automation story
+    enabled: false
+    user_id_env: ZOTERO_USER_ID
+    api_key_env: ZOTERO_API_KEY
+  - kind: mendeley
+    enabled: false                        # official API only; no folder scraping
+    client_id_env: MENDELEY_CLIENT_ID
+  - kind: pdf_folder                      # watched shared folder of PDFs
+    enabled: true
+    path: ./library-inbox
