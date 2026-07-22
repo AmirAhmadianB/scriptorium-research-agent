@@ -4,7 +4,7 @@
 
 # Scriptorium
 
-**A self-updating map of your research field — papers, trends, and funding — paired with a disciplined writing engine grounded in each professor's own corpus.**
+**A self-updating map of your research field — papers, trends, and funding — paired with a disciplined writing engine grounded in each researcher's own corpus.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/AmirAhmadianB/scriptorium-research-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/AmirAhmadianB/scriptorium-research-agent/actions/workflows/ci.yml)
