@@ -1,0 +1,74 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Scriptorium",
+  "version": "0.1.0",
+  "identifier": "com.scriptorium.desktop",
+  "build": {
+    "frontendDist": "../../dashboard/dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "pnpm -w dev",
+    "beforeBuildCommand": "pnpm --filter @scriptorium/dashboard build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Scriptorium",
+        "width": 1280,
+        "height": 860,
+        "minWidth": 900,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "trayIcon": {
+      "iconPath": "icons/32x32.png",
+      "iconAsTemplate": true,
+      "tooltip": "Scriptorium"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "externalBin": [
+      "binaries/scriptorium-api"
+    ],
+    "resources": {
+      "../../../release/sidecar-resources/ingest": "ingest",
+      "../../../release/sidecar-resources/dashboard": "dashboard",
+      "../../../release/sidecar-resources/node_modules": "node_modules",
+      "../../../release/sidecar-resources/bootstrap.sql": "bootstrap.sql",
+      "../../../release/sidecar-resources/config-defaults": "config-defaults"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "installerHooks": "installer-hooks.nsh"
+      },
+      "signCommand": "%WINDOWS_SIGN_COMMAND% %1"
+    },
+    "android": {
+      "debugApplicationIdSuffix": ".debug"
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDM4NERDMkM4RjFEOTAxOTUKUldTVkFkbnh5TUpOT0VRTTFmNjdwcDhTVGxoZm5WdVJIQkhJMjJtWUR0ZURBVmZKZWVyOWdZV3MK",
+      "endpoints": [
+        "https://github.com/REPLACE_WITH_GITHUB_ORG/scriptorium/releases/latest/download/latest.json"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@scriptorium/shared",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "zod": "^3.23.0"
+  }
+}

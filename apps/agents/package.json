@@ -1,0 +1,8 @@
+{
+  "name": "@scriptorium/agents",
+  "private": true,
+  "type": "module",
+  "scripts": { "run": "tsx src/orchestrator.ts" },
+  "dependencies": { "@anthropic-ai/claude-agent-sdk": "latest", "yaml": "^2.5.0" },
+  "devDependencies": { "tsx": "^4.19.0" }
+}
