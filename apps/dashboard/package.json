@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@scriptorium/shared": "workspace:*",
-    "@tiptap/core": "^3.27.3",
+    "@tiptap/core": "^3.28.0",
     "@tiptap/pm": "^3.27.3",
     "@tiptap/react": "^3.27.3",
     "@tiptap/starter-kit": "^3.27.3",
