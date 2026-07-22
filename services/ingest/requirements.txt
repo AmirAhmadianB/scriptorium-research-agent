@@ -1,6 +1,6 @@
 crawl4ai>=0.6
 httpx>=0.27
-pyyaml>=6.0
+pyyaml>=6.0.3
 pymupdf>=1.24
 pytesseract>=0.3.13    # OCR fallback for scanned PDFs; needs the Tesseract binary on PATH
 python-docx>=1.2.0     # .docx documents for Research Focus uploads (Pass 1.3)
