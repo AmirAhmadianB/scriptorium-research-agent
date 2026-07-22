@@ -3,8 +3,7 @@
     "allow": [
       "Bash(pnpm:*)", "Bash(npm:*)", "Bash(npx:*)",
       "Bash(python:*)", "Bash(python3:*)", "Bash(pip:*)",
-      "Bash(docker compose:*)", "Bash(curl localhost:*)",
-      "Bash(psql:*)", "Bash(git:*)",
+      "Bash(curl localhost:*)", "Bash(sqlite3:*)", "Bash(git:*)",
       "Read(**)", "Edit(**)", "Write(**)"
     ],
     "deny": [
