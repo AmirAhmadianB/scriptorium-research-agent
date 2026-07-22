@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm:*)", "Bash(npm:*)", "Bash(npx:*)",
+      "Bash(python:*)", "Bash(python3:*)", "Bash(pip:*)",
+      "Bash(docker compose:*)", "Bash(curl localhost:*)",
+      "Bash(psql:*)", "Bash(git:*)",
+      "Read(**)", "Edit(**)", "Write(**)"
+    ],
+    "deny": [
+      "Read(.env)", "Read(**/.env)",
+      "WebFetch(domain:sciencedirect.com)",
+      "WebFetch(domain:link.springer.com)",
+      "WebFetch(domain:ieeexplore.ieee.org)",
+      "WebFetch(domain:onlinelibrary.wiley.com)"
+    ]
+  }
+}
