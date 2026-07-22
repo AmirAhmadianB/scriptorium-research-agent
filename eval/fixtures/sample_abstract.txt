@@ -1,0 +1,8 @@
+We demonstrate a reflection-geometry ptychographic reconstruction scheme for
+crystalline surfaces using a 200 keV probe and an event-driven hybrid pixel
+detector. By modeling the tilted exit-wave propagation explicitly, the method
+recovers step-edge phase profiles on Si(110) with a height sensitivity of
+0.4 Å, a threefold improvement over our previous holographic approach, at a
+fluence of 850 e/Å². Reconstructions remain stable across a ±1.2° rocking
+range. The present implementation assumes a laterally uniform inner potential,
+which limits accuracy on chemically mixed terraces.

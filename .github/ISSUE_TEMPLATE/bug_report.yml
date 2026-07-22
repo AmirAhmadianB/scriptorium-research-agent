@@ -1,0 +1,53 @@
+name: "Bug report"
+description: "Report something that isn't working"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: "What happened?"
+      description: "Describe the bug you encountered."
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: "Steps to reproduce"
+      description: "Steps to reproduce the behavior."
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: input
+    id: version_commit
+    attributes:
+      label: "Version/commit"
+      description: "What version or commit hash are you running?"
+    validations:
+      required: false
+  - type: dropdown
+    id: component
+    attributes:
+      label: "Which part of Scriptorium?"
+      description: "What component is affected?"
+      options:
+        - Ingest workers (Python)
+        - API (Fastify)
+        - Dashboard (React)
+        - Claude skills/agents
+        - Desktop app
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Relevant log output"
+      description: "Paste any relevant log output or error messages."
+      render: shell
+    validations:
+      required: true

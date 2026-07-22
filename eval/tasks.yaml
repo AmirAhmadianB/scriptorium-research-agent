@@ -1,0 +1,51 @@
+# Benchmark tasks mirroring the system's three real workloads.
+# Scoring: "exact_json" diffs against gold; "judge" uses the eval_judge
+# model with the rubric. Add tasks freely — the harness discovers them.
+tasks:
+  - id: structured-extraction
+    kind: exact_json
+    description: Extract structured metadata from a paper abstract (paper-analyst front half)
+    input_file: fixtures/sample_abstract.txt
+    gold_file: fixtures/sample_abstract.gold.json
+    prompt: |
+      Extract from the abstract below. Return ONLY JSON:
+      {"technique": string, "sample_system": string, "key_metric": string,
+       "claimed_improvement": string, "limitation_admitted": string|null}
+      Abstract:
+      ---
+      {input}
+      ---
+
+  - id: funding-extraction
+    kind: exact_json
+    description: Parse a funding call page to structured records (funding-scout core)
+    input_file: fixtures/funding_page.md
+    gold_file: fixtures/funding_page.gold.json
+    prompt: |
+      Extract every funding opportunity. Return ONLY a JSON array of
+      {"program": string, "deadline": string|null, "amount": string|null,
+       "deadline_uncertain": boolean}.
+      Never invent a year for a partial date.
+      Page:
+      ---
+      {input}
+      ---
+
+  - id: proposal-paragraph
+    kind: judge
+    description: Draft a proposal significance paragraph (proposal-writer quality)
+    input_file: fixtures/proposal_brief.txt
+    prompt: |
+      Write ONE paragraph (120-160 words) for the "Significance" section of an
+      NSERC Alliance proposal based on this brief. Ground every claim in the
+      brief; mark anything needing confirmation as [[CONFIRM]]. No buzzwords.
+      Brief:
+      ---
+      {input}
+      ---
+    rubric: |
+      Score 1-10 on each: (a) grounding — no claims beyond the brief;
+      (b) criterion fit — speaks to partnership value and training, which
+      Alliance evaluates; (c) prose economy — concrete, no filler adjectives;
+      (d) reviewer-resistance — would survive a skeptical referee.
+      Return ONLY JSON: {"a":n,"b":n,"c":n,"d":n,"total":n,"weakest":"one line"}

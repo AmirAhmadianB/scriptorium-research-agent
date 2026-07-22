@@ -1,0 +1,8 @@
+{
+  "name": "@scriptorium/eval",
+  "private": true,
+  "type": "module",
+  "scripts": { "matrix": "tsx run-matrix.ts" },
+  "dependencies": { "yaml": "^2.5.0" },
+  "devDependencies": { "tsx": "^4.19.0" }
+}

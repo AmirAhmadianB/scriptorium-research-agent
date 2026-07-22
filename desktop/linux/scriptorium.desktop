@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Scriptorium
+Comment=Research intelligence dashboard
+# Fix the two paths below to your clone location, then:
+#   cp desktop/linux/scriptorium.desktop ~/.local/share/applications/
+Exec=bash -c 'cd /path/to/scriptorium && (pnpm dev &) && sleep 6 && xdg-open http://localhost:5173'
+Icon=/path/to/scriptorium/desktop/assets/icon-512.png
+Terminal=false
+Categories=Science;Education;

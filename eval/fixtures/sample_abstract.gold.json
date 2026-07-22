@@ -1,0 +1,7 @@
+{
+  "technique": "reflection-geometry ptychography",
+  "sample_system": "Si(110) crystalline surface",
+  "key_metric": "0.4 Å height sensitivity",
+  "claimed_improvement": "threefold improvement over previous holographic approach",
+  "limitation_admitted": "assumes a laterally uniform inner potential, limiting accuracy on chemically mixed terraces"
+}

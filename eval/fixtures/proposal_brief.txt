@@ -1,0 +1,6 @@
+Group capability: reflection electron ptychography on a 200 keV instrument;
+demonstrated 0.4 Å step-height sensitivity on Si(110); custom event-driven
+detector pipeline. Industry partner: a BC semiconductor metrology firm
+(name TBD) needing non-destructive inspection of gate-all-around transistor
+sidewalls. Ask: 2 years, one PhD student, one postdoc, detector upgrade.
+Training outcome: students gain cleanroom + ML reconstruction skills.

@@ -1,0 +1,5 @@
+[
+  {"program": "Stream A: Academic–Industry Instrumentation Grants", "deadline": "2026-10-15", "amount": "$150,000 to $400,000 over up to three years", "deadline_uncertain": false},
+  {"program": "Stream B: Early Career Equipment Supplement", "deadline": "March 1", "amount": "Up to $60,000, single year", "deadline_uncertain": true},
+  {"program": "Stream C: Exploratory Micro-Grants", "deadline": "rolling", "amount": "Maximum $12,500", "deadline_uncertain": false}
+]

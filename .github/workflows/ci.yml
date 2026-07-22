@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  node:
+    name: Node (build + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build dashboard
+        run: pnpm --filter @scriptorium/dashboard build
+
+      - name: Test api
+        run: pnpm --filter @scriptorium/api test
+
+  python:
+    name: Python (compile + lint)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: services/ingest/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r services/ingest/requirements.txt
+
+      - name: Byte-compile ingest package
+        run: python -m compileall -q services/ingest/scriptorium_ingest
+
+      - name: ruff (advisory, no project config yet)
+        continue-on-error: true
+        run: |
+          pip install ruff
+          ruff check services/ingest/scriptorium_ingest
+
+  config:
+    name: Validate config/*.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Parse every config/*.yaml
+        run: |
+          pip install pyyaml
+          python -c "
+          import glob, sys, yaml
+          files = sorted(glob.glob('config/*.yaml'))
+          assert files, 'no config/*.yaml files found'
+          for f in files:
+              yaml.safe_load(open(f, encoding='utf-8'))
+              print('OK', f)
+          "
