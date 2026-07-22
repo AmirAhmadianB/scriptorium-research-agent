@@ -14,5 +14,5 @@ dill>=0.3.8              # Sprint 3 Pass 1 — knowledge-store persistence (self
 pandas>=2.2              # Sprint 3 Pass 1 — entity-graph node store (PDVectorBase), NOT the paper/chunk corpus store
 scipy>=1.13              # Sprint 3 Pass 1 — cosine distance for the entity-graph node store
 reportlab>=4.2           # Sprint 5 Pass 6 — PDF export (pure Python, no external binary/Office/LibreOffice dependency)
-anthropic>=0.40          # Sprint 6 Pass 2 (A2) — packaged-mode provider, direct API (not the CLI)
+anthropic>=0.117.1          # Sprint 6 Pass 2 (A2) — packaged-mode provider, direct API (not the CLI)
 keyring>=25.0            # Sprint 6 Pass 2 (A2) — OS credential store (Windows Credential Manager / macOS Keychain), never plaintext keys
